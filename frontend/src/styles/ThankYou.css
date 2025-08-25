@@ -1,0 +1,25 @@
+.thank-you-container {
+  text-align: center;
+  padding: 30px;
+}
+
+.score-box {
+  background: #f0f0f0;
+  padding: 15px;
+  margin: 20px auto;
+  width: fit-content;
+  border-radius: 8px;
+}
+
+.back-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #0056b3;
+}

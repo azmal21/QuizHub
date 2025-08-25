@@ -1,0 +1,25 @@
+/* Reset everything */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure no default gap */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* prevents horizontal scroll if sidebar slides */
+}
+
+/* Root app container */
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}

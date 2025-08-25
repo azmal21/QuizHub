@@ -1,0 +1,214 @@
+/* ViewUsers.css */
+
+.users-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.users-page h2 {
+  color: #134e4a;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+  border-bottom: 3px solid #14b8a6;
+  padding-bottom: 15px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.users-table thead {
+  background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+}
+
+.users-table thead th {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 18px 16px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.users-table tbody tr {
+  border-bottom: 1px solid #e6fffa;
+  transition: all 0.3s ease;
+}
+
+.users-table tbody tr:hover {
+  background-color: #f0fdfa;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.15);
+}
+
+.users-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.users-table tbody td {
+  padding: 16px;
+  font-size: 1rem;
+  color: #374151;
+  border: none;
+}
+
+.users-table tbody td:first-child {
+  font-weight: 500;
+  color: #134e4a;
+}
+
+/* Loading state */
+p {
+  text-align: center;
+  color: #14b8a6;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 50px;
+}
+
+/* Empty state styling */
+.users-table tbody td[colspan="3"] {
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  padding: 40px;
+  background-color: #f9fafb;
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+  .users-page {
+    padding: 15px 10px;
+  }
+  
+  .users-page h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .users-table {
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .users-table thead th {
+    padding: 12px 8px;
+    font-size: 0.9rem;
+  }
+  
+  .users-table tbody td {
+    padding: 12px 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* Stack table for very small screens */
+  @media screen and (max-width: 480px) {
+    .users-table {
+      border: 0;
+      box-shadow: none;
+    }
+    
+    .users-table thead {
+      display: none;
+    }
+    
+    .users-table tbody tr {
+      border: 1px solid #14b8a6;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      display: block;
+      box-shadow: 0 2px 4px rgba(20, 184, 166, 0.1);
+      background-color: #ffffff;
+    }
+    
+    .users-table tbody tr:hover {
+      transform: none;
+      box-shadow: 0 4px 8px rgba(20, 184, 166, 0.2);
+    }
+    
+    .users-table tbody td {
+      border: none;
+      display: block;
+      padding: 12px 15px;
+      border-bottom: 1px solid #e6fffa;
+      position: relative;
+      padding-left: 35%;
+    }
+    
+    .users-table tbody td:last-child {
+      border-bottom: none;
+    }
+    
+    .users-table tbody td::before {
+      content: attr(data-label) ": ";
+      position: absolute;
+      left: 15px;
+      width: 30%;
+      font-weight: 600;
+      color: #14b8a6;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Add data labels for mobile view - you'll need to add data-label attributes to your td elements */
+    .users-table tbody tr td:nth-child(1)::before {
+      content: "Name: ";
+    }
+    
+    .users-table tbody tr td:nth-child(2)::before {
+      content: "Phone: ";
+    }
+    
+    .users-table tbody tr td:nth-child(3)::before {
+      content: "Joined: ";
+    }
+  }
+}
+
+/* Tablet specific adjustments */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .users-table thead th {
+    font-size: 1rem;
+    padding: 15px 12px;
+  }
+  
+  .users-table tbody td {
+    padding: 14px 12px;
+  }
+}
+
+/* Large screen optimizations */
+@media screen and (min-width: 1201px) {
+  .users-page {
+    padding: 30px;
+  }
+  
+  .users-page h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+  
+  .users-table thead th {
+    padding: 20px;
+    font-size: 1.2rem;
+  }
+  
+  .users-table tbody td {
+    padding: 18px 20px;
+    font-size: 1.1rem;
+  }
+}

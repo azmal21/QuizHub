@@ -1,0 +1,66 @@
+/* src/App.css or root CSS file */
+
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root styling */
+:root {
+  --primary-color: #008080; /* Teal */
+  --secondary-color: #ffffff; /* White */
+  --text-color: #333333; /* Dark gray for text */
+  --border-radius: 6px;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body defaults */
+body {
+  font-family: var(--font-family);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  margin-bottom: 0.5em;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+/* Buttons */
+button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #006666; /* Darker teal on hover */
+}
+
+/* Center buttons */
+.center-btn {
+  display: block;
+  margin: 20px auto;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}

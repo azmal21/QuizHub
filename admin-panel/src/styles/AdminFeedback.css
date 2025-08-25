@@ -1,0 +1,223 @@
+/* AdminFeedback.css */
+
+.feedback-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.feedback-title {
+  color: #0d9488;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(13, 148, 136, 0.1);
+}
+
+.feedback-loading,
+.feedback-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #0d9488;
+  padding: 40px;
+  background-color: #f0fdfa;
+  border: 2px solid #5eead4;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-table thead {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  color: white;
+}
+
+.feedback-table th {
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid #0f766e;
+}
+
+.feedback-table tbody tr {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #e6fffa;
+}
+
+.feedback-table tbody tr:nth-child(even) {
+  background-color: #f0fdfa;
+}
+
+.feedback-table tbody tr:hover {
+  background-color: #ccfbf1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(13, 148, 136, 0.1);
+}
+
+.feedback-table td {
+  padding: 12px;
+  color: #374151;
+  font-size: 0.9rem;
+  vertical-align: top;
+  border-bottom: 1px solid #e6fffa;
+}
+
+.feedback-table td:first-child {
+  font-weight: 600;
+  color: #0d9488;
+}
+
+.feedback-table td:nth-child(4) {
+  font-weight: 600;
+  color: #f59e0b;
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  .feedback-container {
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+  }
+
+  .feedback-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .feedback-table {
+    font-size: 0.8rem;
+  }
+
+  .feedback-table th,
+  .feedback-table td {
+    padding: 8px 6px;
+  }
+
+  .feedback-table th {
+    font-size: 0.75rem;
+  }
+
+  /* Stack table on very small screens */
+  @media screen and (max-width: 600px) {
+    .feedback-table,
+    .feedback-table thead,
+    .feedback-table tbody,
+    .feedback-table th,
+    .feedback-table td,
+    .feedback-table tr {
+      display: block;
+    }
+
+    .feedback-table thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    .feedback-table tr {
+      background-color: #ffffff;
+      border: 2px solid #5eead4;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .feedback-table tr:hover {
+      transform: none;
+      box-shadow: 0 4px 8px rgba(13, 148, 136, 0.15);
+    }
+
+    .feedback-table td {
+      border: none;
+      padding: 8px 0;
+      text-align: left;
+      position: relative;
+      padding-left: 30%;
+      word-wrap: break-word;
+    }
+
+    .feedback-table td:before {
+      content: attr(data-label) ": ";
+      position: absolute;
+      left: 0;
+      width: 28%;
+      padding-right: 10px;
+      white-space: nowrap;
+      font-weight: 600;
+      color: #0d9488;
+      font-size: 0.8rem;
+    }
+
+    .feedback-table td:nth-child(1):before { content: "Name: "; }
+    .feedback-table td:nth-child(2):before { content: "Phone: "; }
+    .feedback-table td:nth-child(3):before { content: "Message: "; }
+    .feedback-table td:nth-child(4):before { content: "Rating: "; }
+    .feedback-table td:nth-child(5):before { content: "Date: "; }
+  }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+  .feedback-container {
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .feedback-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .feedback-loading,
+  .feedback-empty {
+    padding: 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Scrollable table for medium screens */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .feedback-container {
+    overflow-x: auto;
+  }
+
+  .feedback-table {
+    min-width: 700px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .feedback-container {
+    box-shadow: none;
+    padding: 10px;
+  }
+
+  .feedback-table {
+    box-shadow: none;
+  }
+
+  .feedback-table tbody tr:hover {
+    background-color: transparent;
+    transform: none;
+  }
+}

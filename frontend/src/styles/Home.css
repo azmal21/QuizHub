@@ -1,0 +1,324 @@
+/* Dashboard.css - Professional White & Teal Design */
+
+/* Main container */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'sans-serif';
+}
+
+/* Loading state */
+.loading-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #20B2AA;
+  font-weight: 500;
+  padding: 3rem 0;
+  margin: 0;
+  background: linear-gradient(135deg, #f0fdfd, #e6fffe);
+  border-radius: 12px;
+  border-left: 4px solid #20B2AA;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* No quizzes state */
+.no-quizzes-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666666;
+  padding: 3rem 2rem;
+  margin: 0;
+  background: #f9f9f9;
+  border-radius: 12px;
+  border: 2px dashed #cccccc;
+}
+
+/* Quiz card */
+.quiz-card {
+  background: #ffffff;
+  border: 2px solid #e6e6e6;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #20B2AA, #008080);
+  transition: height 0.3s ease;
+}
+
+.quiz-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(32, 178, 170, 0.15);
+  border-color: #20B2AA;
+}
+
+.quiz-card:hover::before {
+  height: 6px;
+}
+
+/* Completed quiz styling */
+.quiz-card[style*="background-color: rgb(230, 255, 230)"] {
+  background: linear-gradient(135deg, #f0fff4, #e6ffe6) !important;
+  border: 2px solid #20B2AA !important;
+}
+
+.quiz-card[style*="background-color: rgb(230, 255, 230)"]::before {
+  background: linear-gradient(90deg, #28a745, #20B2AA);
+}
+
+/* Quiz title */
+.quiz-title {
+  color: #008080;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+/* Quiz description */
+.quiz-description {
+  color: #333333;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  font-weight: 400;
+}
+
+/* Quiz time */
+.quiz-time {
+  color: #666666;
+  font-size: 0.9rem;
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quiz-time::before {
+  font-size: 1rem;
+}
+
+/* Completed badge */
+.completed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #28a745, #20B2AA);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Attempt button */
+.attempt-btn {
+  background: linear-gradient(135deg, #20B2AA, #008080);
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.attempt-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.attempt-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1a9999, #006666);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 178, 170, 0.4);
+}
+
+.attempt-btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.attempt-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(32, 178, 170, 0.3);
+}
+
+/* Disabled button */
+.attempt-btn:disabled {
+  background: linear-gradient(135deg, #cccccc, #999999);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.7;
+}
+
+.attempt-btn:disabled::before {
+  display: none;
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1.5rem;
+  }
+  
+  .quiz-card {
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .quiz-title {
+    font-size: 1.3rem;
+  }
+  
+  .quiz-description {
+    font-size: 0.95rem;
+  }
+  
+  .attempt-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+  
+  .quiz-card {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+  }
+  
+  .quiz-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .quiz-description {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .quiz-time {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  .completed-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .attempt-btn {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+  
+  .loading-text,
+  .no-quizzes-text {
+    padding: 2rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  .dashboard-container {
+    padding: 0.75rem;
+  }
+  
+  .quiz-card {
+    padding: 1rem;
+  }
+  
+  .quiz-title {
+    font-size: 1.1rem;
+  }
+  
+  .quiz-description {
+    font-size: 0.85rem;
+  }
+  
+  .attempt-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .quiz-card {
+    border-width: 3px;
+  }
+  
+  .attempt-btn {
+    border: 2px solid #008080;
+  }
+  
+  .completed-badge {
+    border: 2px solid #28a745;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .quiz-card,
+  .attempt-btn,
+  .loading-text {
+    transition: none;
+    animation: none;
+  }
+  
+  .quiz-card:hover {
+    transform: none;
+  }
+  
+  .attempt-btn:hover:not(:disabled) {
+    transform: none;
+  }
+}

@@ -1,0 +1,238 @@
+/* LoginPage.css - Modern White & Teal Design */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fdfd 0%, #e6f9f9 100%);
+  padding: 2rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(32, 178, 170, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(0, 128, 128, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.login-container h2 {
+  color: #20B2AA;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #20B2AA 0%, #008080 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(32, 178, 170, 0.1);
+}
+
+.login-container form {
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.05),
+    0 10px 25px rgba(32, 178, 170, 0.08),
+    0 0 0 1px rgba(32, 178, 170, 0.05);
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid rgba(32, 178, 170, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-container form:hover {
+  box-shadow: 
+    0 8px 12px rgba(0, 0, 0, 0.08),
+    0 15px 35px rgba(32, 178, 170, 0.12),
+    0 0 0 1px rgba(32, 178, 170, 0.1);
+  transform: translateY(-2px);
+}
+
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e1f5f5;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #333333;
+  background: #ffffff;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  outline: none;
+}
+
+.login-container input[type="password"]::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.login-container input[type="password"]:focus {
+  border-color: #20B2AA;
+  box-shadow: 
+    0 0 0 3px rgba(32, 178, 170, 0.1),
+    0 2px 8px rgba(32, 178, 170, 0.15);
+  background: #fefffe;
+}
+
+.login-container input[type="password"]:hover:not(:focus) {
+  border-color: #b3e5e5;
+  background: #fafffe;
+}
+
+.login-container button[type="submit"] {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #20B2AA 0%, #008080 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  letter-spacing: 0.025em;
+  box-shadow: 
+    0 2px 4px rgba(32, 178, 170, 0.2),
+    0 4px 12px rgba(32, 178, 170, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.login-container button[type="submit"]:hover {
+  background: linear-gradient(135deg, #1ca3a3 0%, #006666 100%);
+  box-shadow: 
+    0 4px 8px rgba(32, 178, 170, 0.3),
+    0 8px 20px rgba(32, 178, 170, 0.2);
+  transform: translateY(-2px);
+}
+
+.login-container button[type="submit"]:hover::before {
+  left: 100%;
+}
+
+.login-container button[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 4px rgba(32, 178, 170, 0.2),
+    0 4px 12px rgba(32, 178, 170, 0.15);
+}
+
+.login-container button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(32, 178, 170, 0.3),
+    0 4px 8px rgba(32, 178, 170, 0.2);
+}
+
+.login-container .error {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 500;
+  animation: errorSlide 0.3s ease-out;
+}
+
+@keyframes errorSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .login-container form {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+  }
+  
+  .login-container input[type="password"],
+  .login-container button[type="submit"] {
+    padding: 0.875rem 1rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .login-container form {
+    border: 2px solid #20B2AA;
+  }
+  
+  .login-container input[type="password"] {
+    border-width: 2px;
+  }
+  
+  .login-container input[type="password"]:focus {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .login-container form,
+  .login-container input[type="password"],
+  .login-container button[type="submit"],
+  .login-container .error {
+    transition: none;
+  }
+  
+  .login-container button[type="submit"]::before {
+    display: none;
+  }
+  
+  @keyframes errorSlide {
+    from, to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
