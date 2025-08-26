@@ -68,8 +68,9 @@ exports.deleteQuiz = async (req, res) => {
 // -------------------- GET QUIZ RESULTS --------------------
 exports.getQuizResults = async (req, res) => {
   try {
-    const attempts = await UserAttempt.find({ quizId: req.params.id })
-      .select("name phone score createdAt")
+    const quizId = mongoose.Types.ObjectId(req.params.id); // convert string to ObjectId
+    const attempts = await UserAttempt.find({ quizId })
+      .select("name phone score attemptedAt")
       .lean();
 
     return res.status(200).json({ success: true, attempts });

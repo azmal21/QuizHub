@@ -1,3 +1,4 @@
+// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -10,26 +11,25 @@ require("dotenv").config();
 const adminRoutes = require("./routes/adminRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 const userRoutes = require("./routes/userRoutes");
-const feedbackRoutes = require("./routes/FeedbackRoutes");
+const feedbackRoutes = require("./routes/feedbackRoutes");
 
 const app = express();
 
-// Middlewares
+// 🛡️ Security & middleware
+app.use(helmet()); // set security headers
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"],
+  origin: ["http://localhost:5173","http://localhost:5174",],   // your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
 
-
-
-app.use(nocache());
-app.use(express.json());
-app.use(helmet());
+app.use(express.json()); // parse JSON requests
+app.use(nocache()); // prevent caching
 if (process.env.NODE_ENV !== "production") {
-  app.use(morgan("dev"));
+  app.use(morgan("dev")); // log requests only in dev
 }
 
-// Routes
+// 🛣️ Routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/quiz", quizRoutes);
 app.use("/api/user", userRoutes);
@@ -37,42 +37,38 @@ app.use("/api/feedback", feedbackRoutes);
 
 // Root route
 app.get("/", (req, res) => {
-  res.send("Quiz App API is running ✅");
+  res.send("✅ Quiz App API is running...");
 });
 
-// Error handler
+// ❌ Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ success: false, message: "Server Error" });
 });
 
-app.use((req, res, next) => {
-  res.set("Cache-Control", "no-store, no-cache, must-revalidate, private");
-  next();
-});
-
-
+// 🚦 Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Connected to MongoDB");
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("✅ MongoDB connected successfully!");
   } catch (err) {
-    console.error("MongoDB connection failed:", err.message);
+    console.error("❌ MongoDB connection failed:", err.message);
     process.exit(1);
   }
 };
 
-connectDB();
+// Start server after DB connection
+const startServer = async () => {
+  await connectDB();
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+};
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+startServer();
 
-// Graceful shutdown
+// 🛑 Graceful shutdown
 process.on("SIGINT", async () => {
   await mongoose.connection.close();
-  console.log("MongoDB connection closed");
+  console.log("🔌 MongoDB connection closed");
   process.exit(0);
 });

@@ -48,10 +48,11 @@ exports.getQuizById = async (req, res) => {
 // -------------------- GET TOTAL QUIZZES COUNT --------------------
 exports.getQuizCount = async (req, res) => {
   try {
-    const totalQuizzes = await Quiz.estimatedDocumentCount(); // faster for large collections
+    const totalQuizzes = await Quiz.countDocuments(); // accurate count
     return res.status(200).json({ success: true, totalQuizzes });
   } catch (err) {
     console.error("❌ getQuizCount Error:", err.message);
     return res.status(500).json({ success: false, message: "Failed to fetch quiz count" });
   }
 };
+

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Dashboard.css"; 
+import "../styles/Dashboard.css";
 import api from "../services/api";
 
 const Dashboard = () => {
@@ -11,8 +11,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  console.log("👉 Using API URL:", import.meta.env.VITE_API_URL);
-}, []);
+    console.log("👉 Using API URL:", import.meta.env.VITE_API_URL);
+  }, []);
 
 
   // Fetch stats when component loads
@@ -24,6 +24,10 @@ const Dashboard = () => {
           api.get("/user/count"),
           api.get("/user/attemptcount"),
         ]);
+
+        console.log("👉 quizRes:", quizRes.data);   // 👈 add this
+        console.log("👉 userRes:", userRes.data);
+        console.log("👉 attemptRes:", attemptRes.data);
 
         setStats({
           quizzes: quizRes.data.totalQuizzes || 0,
