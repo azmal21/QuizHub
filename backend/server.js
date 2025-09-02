@@ -11,7 +11,7 @@ require("dotenv").config();
 const adminRoutes = require("./routes/adminRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 const userRoutes = require("./routes/userRoutes");
-const feedbackRoutes = require("./routes/feedbackRoutes");
+const feedbackRoutes = require("./routes/FeedbackRoutes");
 
 const app = express();
 
@@ -72,3 +72,4 @@ process.on("SIGINT", async () => {
   console.log("🔌 MongoDB connection closed");
   process.exit(0);
 });
+
