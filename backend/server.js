@@ -18,7 +18,7 @@ const app = express();
 // 🛡️ Security & middleware
 app.use(helmet()); // set security headers
 app.use(cors({
-  origin: ["http://localhost:5173","http://localhost:5174",],   // your frontend URL
+  origin: ["http://localhost:5173","https://quizhub-frontend-1.onrender.com",],   // your frontend URL
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
@@ -72,4 +72,5 @@ process.on("SIGINT", async () => {
   console.log("🔌 MongoDB connection closed");
   process.exit(0);
 });
+
 
