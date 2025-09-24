@@ -15,32 +15,28 @@ const feedbackRoutes = require("./routes/FeedbackRoutes");
 
 const app = express();
 
-// 🛡️ Security & middleware
-app.use(helmet()); // set security headers
+app.use(helmet()); 
 app.use(cors({
-  origin: ["https://quizhub-admin-panel-01.onrender.com","https://quizhub-frontend-1.onrender.com",],   // your frontend URL
+  origin: ["*",],   
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 }));
 
-app.use(express.json()); // parse JSON requests
-app.use(nocache()); // prevent caching
+app.use(express.json()); 
+app.use(nocache()); 
 if (process.env.NODE_ENV !== "production") {
-  app.use(morgan("dev")); // log requests only in dev
+  app.use(morgan("dev")); 
 }
 
-// 🛣️ Routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/quiz", quizRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/feedback", feedbackRoutes);
 
-// Root route
 app.get("/", (req, res) => {
   res.send("✅ Quiz App API is running...");
 });
 
-// ❌ Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ success: false, message: "Server Error" });
@@ -66,12 +62,13 @@ const startServer = async () => {
 
 startServer();
 
-// 🛑 Graceful shutdown
+//  Graceful shutdown
 process.on("SIGINT", async () => {
   await mongoose.connection.close();
   console.log("🔌 MongoDB connection closed");
   process.exit(0);
 });
+
 
 
 
