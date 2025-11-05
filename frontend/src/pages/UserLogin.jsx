@@ -81,7 +81,7 @@ const UserLogin = () => {
           disabled={loading}
           className="login-button"
         >
-          {loading ? "Checking..." : "Login"}
+          {loading ? "Logging..." : "Login"}
         </button>
       </div>
     </div>
@@ -89,3 +89,4 @@ const UserLogin = () => {
 };
 
 export default UserLogin;
+
