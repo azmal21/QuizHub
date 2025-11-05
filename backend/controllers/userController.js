@@ -74,42 +74,61 @@ exports.submitQuiz = async (req, res) => {
 // ------------------------------
 exports.loginUser = async (req, res) => {
   try {
-    let { name, phone, firebaseUid } = req.body;
-    if (!name || !phone || !firebaseUid) {
-      return res.status(400).json({ success: false, message: "Name, phone, and firebase UID required" });
+    let { name, phone } = req.body;
+
+    // Validate input
+    if (!name || !phone) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Name and phone number are required." });
     }
 
     name = name.trim();
+
+    // Check phone number format (10 digits)
     if (!/^\d{10}$/.test(phone)) {
-      return res.status(400).json({ success: false, message: "Invalid phone number format" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid phone number format. Must be 10 digits." });
     }
 
+    // Find existing user
     let user = await User.findOne({ phone });
 
     if (user) {
+      // Check if name matches existing phone record
       if (user.name !== name) {
-        return res.status(400).json({ success: false, message: "Phone already registered with a different name" });
+        return res.status(400).json({
+          success: false,
+          message: "This phone number is already registered with a different name.",
+        });
       }
 
-      // ✅ Update firebaseUid if missing or changed
-      if (!user.firebaseUid || user.firebaseUid !== firebaseUid) {
-        user.firebaseUid = firebaseUid;
-        await user.save();
-      }
-
-      return res.status(200).json({ success: true, userId: user._id });
+      // Existing user found
+      return res.status(200).json({
+        success: true,
+        userId: user._id,
+        message: "Login successful (existing user).",
+      });
     }
 
-    // ✅ New user registration
-    user = new User({ name, phone, firebaseUid });
+    // Create new user if not found
+    user = new User({ name, phone });
     await user.save();
 
-    return res.status(201).json({ success: true, userId: user._id });
+    return res.status(201).json({
+      success: true,
+      userId: user._id,
+      message: "Login successful (new user created).",
+    });
   } catch (err) {
     console.error("loginUser error:", err);
-    return res.status(500).json({ success: false, message: "Server error", error: err.message });
+    return res
+      .status(500)
+      .json({ success: false, message: "Server error", error: err.message });
   }
 };
+
 
 // ------------------------------
 // Get all quiz IDs attempted by a user
