@@ -17,11 +17,6 @@ const Welcome = () => {
 
   const faqs = [
     {
-      question: "How do I log in?",
-      answer:
-        "You can log in using your mobile number with OTP (One Time Password). No need to remember a password!",
-    },
-    {
       question: "Can I attempt a quiz more than once?",
       answer:
         "No. Each quiz can only be attempted once. This ensures fairness and equal opportunity for all participants.",
@@ -45,11 +40,6 @@ const Welcome = () => {
       question: "How can I give feedback?",
       answer:
         "Go to the 'Feedback' section in your dashboard to share your thoughts or report an issue. Your feedback is visible only to the admin.",
-    },
-    {
-      question: "Can I log in again using OTP?",
-      answer:
-        "Yes, you can log in again using your mobile number and OTP. However, you must enter the same name you used during your first login to keep your records consistent.",
     },
   ];
 
@@ -169,3 +159,4 @@ const Welcome = () => {
 };
 
 export default Welcome;
+
