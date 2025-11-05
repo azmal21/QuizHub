@@ -65,7 +65,7 @@ const Welcome = () => {
             onClick={() => navigate("/login")}
             aria-label="Login with OTP"
           >
-            Login with OTP
+            Login
           </button>
         </section>
       </div>
@@ -159,4 +159,5 @@ const Welcome = () => {
 };
 
 export default Welcome;
+
 
