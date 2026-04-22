@@ -6,7 +6,7 @@ import api from "../api";
 const AttemptQuiz = () => {
   const { quizId } = useParams();
   const navigate = useNavigate();
-
+ 
   const [quiz, setQuiz] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [timeLeft, setTimeLeft] = useState(0);
