@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/AttemptQuiz.css";
 import api from "../api";
-
+  
 const AttemptQuiz = () => {
   const { quizId } = useParams();
   const navigate = useNavigate();
